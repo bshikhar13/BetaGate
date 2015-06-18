@@ -1,0 +1,1 @@
+Combining lines can help shorten code and possibly improve performance (speed), but when debugging, it helps to split things up (ie, not embed constructors within constructors). Create a File object, see if this is the place where the program trips up. If not, then pass the File object to Scanner (in a separate line) and see what type of error gets thrown. 

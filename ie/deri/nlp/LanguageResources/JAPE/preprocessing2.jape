@@ -1,0 +1,147 @@
+/*
+*  preprocessing2.jape
+*
+* Copyright (c) 2007- , DERI, National University of Ireland, Galway.
+*  Brian Davis, 12 December 2007 
+*  $Id: preprocessing2.jape,v 1.0 2007/12/12 19:24:00 GMT
+*
+* The Phase seperates Annotations of Company relations from Lookup Annotations 
+*/
+
+Phase: preprocessing2
+Input: Lookup 
+
+Rule: Preprocess1
+(
+{Lookup.majorType==acquires_verb}
+):acquiresVerb
+
+--> 
+:acquiresVerb
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("acquiresVerb");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess1");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"ownerOf", newFeatures);
+  }
+ 
+
+/* - acquires, took over */
+
+
+Rule: Preprocess1a
+(
+{Lookup.majorType==acquires_verb_passive}
+):acquiresVerbPassive
+
+--> 
+:acquiresVerbPassive
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("acquiresVerbPassive");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess1a");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"ownerOfPassive", newFeatures);
+  }
+ 
+
+/* - acquires, took over passive */
+
+Rule: Preprocess1c
+(
+{Lookup.majorType==bids_v}
+):bids
+
+--> 
+:bids
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("bids");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess1c");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"bidsFor", newFeatures);
+  }
+
+
+Rule: Preprocess2
+(
+{Lookup.majorType==isCustomerOf}
+):isCustomerOf
+
+--> 
+:isCustomerOf
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("isCustomerOf");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess2");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"customerOf", newFeatures);
+}
+
+/*  -  buys, purchases, is a customer of */
+
+Rule: Preprocess3
+(
+{Lookup.majorType==isSupplierOf_verb}
+):isSupplierOf
+
+--> 
+:isSupplierOf
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("isSupplierOf");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess3");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"supplierOf", newFeatures);
+}
+
+/* -  sells, provides, supplies*/
+
+
+Rule: Preprocess4
+(
+{Lookup.majorType==isLenderOf}
+):isLenderOf
+
+--> 
+:isLenderOf
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("isLenderOf");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess4");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"lenderOf", newFeatures);
+}
+
+/* -  loaned, gave cash, provided financial support, give money*/
+
+
+Rule: Preprocess5
+(
+{Lookup.majorType==isCompetitorOf}
+):isCompetitorOf
+--> 
+:isCompetitorOf
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("isCompetitorOf");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess5");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"competitorOf", newFeatures);
+}
+
+/*   rivals, opposes, is a competitor to , */
+
+
+Rule: Preprocess6
+(
+{Lookup.minorType==company}
+):Company
+--> 
+:Company
+  {
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("Company");	
+	gate.FeatureMap newFeatures= Factory.newFeatureMap();
+	newFeatures.put("rule","Preprocess5");
+	annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"Company", newFeatures);
+}
+
+/*   rivals, opposes, is a competitor to , */
+
+
+
+

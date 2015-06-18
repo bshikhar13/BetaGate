@@ -1,0 +1,55 @@
+This tutorial has been exported from Eclipse 3.2.2
+NAME
+HLTTutorial.java
+ 
+DESCRIPTION
+
+Corpus Pipeline in GATE for Named Enitity recognition and simple relation extraction.
+Output is RDF style triples
+Domain: Business
+
+ie/deri/nlp/LanguageResources #Contains gazeteers - wordlists
+
+
+bin/ie/deri/nlp - class file
+
+/ie/deri/nlp - java sources.
+
+CONFIGURATION
+
+********IMPORTANT ************
+
+Ensure that the GATE_HOME environmental variable is set to point to the GATE directory in command line or shell or IDE  or include in commandline arguments.
+
+Ensure that the directory containing your documents is passed to args[0] or set in your IDE 
+
+Testdocuments are available in: GATETutorial/programming/TestDocuments
+
+You may have to configure your build path to point to ie/deri/nlp/LanguageResources depending on your IDE.
+or it should be added as an external library via shell or commandline terminal
+
+Add gate.jar and the jars within GATE_HOME/lib as libraries within your build_path in IDE or include as library via shell or commandline prompt.
+
+ 
+RUNNING:
+Compile the Java class and execute main() method in a terminal or command prompt or equivilent depending on IDE.
+ 
+ASSUMPTIONS
+This program has been tested with GATE Release 4.0 (July 12th 2007)
+ 
+REQUIREMENTS:
+Sun Java 5.0  or later..
+GATE Release 4.0 (July 12th 2007)  
+Download at http://gate.ac.uk/download/index.html
+
+AUTHOR:
+Brian Davis, Contact Brian.Davis@deri.org 
+
+Version 
+1.5
+
+INSTITUTION:
+Copyright (c) 2007- , DERI, National University of Ireland, Galway.
+
+
+

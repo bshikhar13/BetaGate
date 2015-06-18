@@ -1,0 +1,37 @@
+/*
+* myjape.jape
+*
+*  Copyright (c) 2008- , Some University .
+*  Somebody, 09 September 2008 
+*  Project XXXXXXX
+*/
+
+Phase: CompanyRelations2
+Input: Company customerOf Split 
+Options: control=all
+
+Rule: CompanytoCompanyRelation2
+(
+({Company}):c1({customerOf}):v({Company}):c2 {Split}
+):companytoCompanyRelation2
+
+--> 
+:XXXXXXXXXXX
+  {
+
+	gate.AnnotationSet matchedCompanies=(gate.AnnotationSet) bindings.get("c1");
+    Annotation company1=matchedCompanies.iterator().next();
+    gate.AnnotationSet matchedCompanies2=(gate.AnnotationSet) bindings.get("c2");
+    Annotation company2=matchedCompanies2.iterator().next();
+    gate.AnnotationSet matchedVerb=(gate.AnnotationSet) bindings.get("v");
+    Annotation verb=matchedVerb.iterator().next();
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("XXXXXXXXXX");      
+    gate.FeatureMap newFeatures= Factory.newFeatureMap();
+    newFeatures.put("Company1",company1);
+    newFeatures.put("customerOf",verb);
+    newFeatures.put("Company2",company2);	
+	newFeatures.put("rule","CompanytoCompanyRelation2");
+	annotations.add(XXXXXXXXX);
+}
+
+/* Company 2 Company relation -  buys, purchases, is a customer of */

@@ -1,0 +1,8 @@
+isSupplierOf.lst:isSupplierOf_verb::en
+acquired.lst:acquires_verb::en
+isCustomerOf.lst:isCustomerOf::en
+isLenderOf.lst:isLenderOf::en
+companies.lst:organisation:company:en
+acquiredPassive.lst:acquires_verb_passive:en
+isCompetitorOf.lst:isCompetitorOf::en
+bids.lst:bids_v::en

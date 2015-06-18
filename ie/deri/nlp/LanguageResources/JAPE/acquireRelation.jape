@@ -1,0 +1,87 @@
+/*
+* acquireRelation.jape
+*
+* Copyright (c) 2007- , DERI, National University of Ireland, Galway.
+*  Brian Davis, 12 December 2007
+*  $Id: acquireRelation.jape,v 1.0 2007/12/12 16:47:00 GMT
+*/
+
+Phase: CompanyRelations
+
+Input: Company ownerOf Split CC
+
+ 
+
+Rule: CompanytoCompanyRelation1
+
+(
+
+({Company}):c1 ({ownerOf}):v ({Company}):c2 ({Split}|{CC})
+
+):companytoCompanyRelation1
+
+ 
+
+-->
+
+:companytoCompanyRelation1
+
+  {
+
+    gate.AnnotationSet matchedCompanies=(gate.AnnotationSet) bindings.get("c1");
+    Annotation company1=matchedCompanies.iterator().next();
+    gate.AnnotationSet matchedCompanies2=(gate.AnnotationSet) bindings.get("c2");
+    Annotation company2=matchedCompanies2.iterator().next();
+    gate.AnnotationSet matchedVerb=(gate.AnnotationSet) bindings.get("v");
+    Annotation verb=matchedVerb.iterator().next();
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("companytoCompanyRelation1");      
+    gate.FeatureMap newFeatures= Factory.newFeatureMap();
+    newFeatures.put("Company1",company1);
+    newFeatures.put("ownerOf",verb);
+    newFeatures.put("Company2",company2);
+    newFeatures.put("rule","CompanytoCompanyRelation1");
+    annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"companytoCompanyRelation1", newFeatures);
+
+  
+
+  }
+  
+Phase: CompanyRelations6
+
+Input: Company ownerOfPassive Split CC
+
+ 
+
+Rule: CompanytoCompanyRelation6
+
+(
+
+({Company}):c1 ({ownerOfPassive}):v ({Company}):c2 ({Split}|{CC})
+
+):companytoCompanyRelation6
+
+ 
+
+-->
+
+:companytoCompanyRelation6
+
+  {
+
+    gate.AnnotationSet matchedCompanies=(gate.AnnotationSet) bindings.get("c1");
+    Annotation company1=matchedCompanies.iterator().next();
+    gate.AnnotationSet matchedCompanies2=(gate.AnnotationSet) bindings.get("c2");
+    Annotation company2=matchedCompanies2.iterator().next();
+    gate.AnnotationSet matchedVerb=(gate.AnnotationSet) bindings.get("v");
+    Annotation verb=matchedVerb.iterator().next();
+    gate.AnnotationSet matchedAnns= (gate.AnnotationSet) bindings.get("companytoCompanyRelation6");      
+    gate.FeatureMap newFeatures= Factory.newFeatureMap();
+    newFeatures.put("Company1",company2);
+    newFeatures.put("ownerOf",verb);
+    newFeatures.put("Company2",company1);
+    newFeatures.put("rule","CompanytoCompanyRelation6");
+    annotations.add(matchedAnns.firstNode(),matchedAnns.lastNode(),"companytoCompanyRelation6", newFeatures);
+
+  
+
+  }
