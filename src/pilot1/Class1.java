@@ -10,6 +10,8 @@ import java.util.Set;
 import java.io.File;
 import java.net.URL;
 
+
+
 class Class1{
 	public static void main(String args[]) throws Exception{
 
@@ -18,17 +20,16 @@ class Class1{
 		//Factory.newDocument("This is a Document, or I must say this is a test document");
 		
 		FeatureMap params = Factory.newFeatureMap();
-		
+		 String testString = "I go to U.S.A.. This is a test String and It will come back to take the revenge. Iphone is the best phone in the market. It is manufactured by Apple Inc. Steve Jobs is the founder of Apple Computers. He lives in India. On 26 June 1975, Prime Minister Indira Gandhi declared a state of emergency in India which lasted until 1977. During this period, many of her political opponents were jailed and opposition groups (including the RSS) were banned.[47][48] As pracharak in-charge of the Akhil Bharatiya Vidyarthi Parishad (ABVP), the student wing of the RSS, Modi was forced to go underground in Gujarat and frequently traveled in disguise to avoid arrest. He became involved in printing pamphlets opposing the government, sending them to Delhi and organising demonstrations.[21][49][50][51] During this period Modi wrote a Gujarati book, Sangharsh ma Gujarat (The Struggles of Gujarat), describing events during the Emergency. "; 
 		params.put(
-				Document.DOCUMENT_URL_PARAMETER_NAME,new URL("http://stackoverflow.com/questions/8943661/please-initialize-the-log4j-system-properly-warning"));
-		
-		params.put(Document.DOCUMENT_ENCODING_PARAMETER_NAME, "UTF-8");
+				Document.DOCUMENT_STRING_CONTENT_PARAMETER_NAME,testString);
 		
 		
 		FeatureMap feats = Factory.newFeatureMap();
-		feats.put("date", new Date());
+		feats.put("createdBy", "ShikharB");
 		Factory.createResource("gate.corpora.DocumentImpl",params,feats,"This is Home");
-		Document doc = Factory.newDocument(new URL("http://stackoverflow.com/questions/8943661/please-initialize-the-log4j-system-properly-warning"), "UTF-8");
+		Document doc = Factory.newDocument(testString);
+		
 		Map<String, AnnotationSet> namedASes = doc.getNamedAnnotationSets();
 		System.out.println("No. of Named Annotation Sets : "+ namedASes.size());
 		
