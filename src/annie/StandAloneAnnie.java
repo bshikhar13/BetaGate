@@ -43,7 +43,7 @@ public class StandAloneAnnie {
 
 		System.out.println("Initializing GATE ...");
 		Gate.init();
-		System.out.println("...GATE initialised");
+		System.out.println("GATE initialised");
 
 		// initialise ANNIE (this may take several minutes)
 		StandAloneAnnie annie = new StandAloneAnnie();
@@ -75,7 +75,9 @@ public class StandAloneAnnie {
 		String endTag = "</span>";
 
 		while (iter.hasNext()) {
+			System.out.println("Heya");
 			doc = (Document) iter.next();
+			System.out.println(doc);
 			AnnotationSet defaultAnnotSet = doc.getAnnotations();
 			Set annotTypesRequired = new HashSet();
 			annotTypesRequired.add("Person");
@@ -84,13 +86,16 @@ public class StandAloneAnnie {
 					defaultAnnotSet.get(annotTypesRequired));
 
 			FeatureMap features = doc.getFeatures();
-			String originalContent = (String) features
+			System.out.println(features);
+			String originalContent = (String)features
 					.get(GateConstants.ORIGINAL_DOCUMENT_CONTENT_FEATURE_NAME);
-			RepositioningInfo info = (RepositioningInfo) features
+			RepositioningInfo info = (RepositioningInfo)features
 					.get(GateConstants.DOCUMENT_REPOSITIONING_INFO_FEATURE_NAME);
 
+			System.out.println(originalContent);
+			System.out.println(info);
 			++count;
-			File file = new File("StANNIE_" + count + ".HTML");
+			File file = new File("Output" + count + ".HTML");
 			Out.prln("File name: '" + file.getAbsolutePath() + "'");
 			if (originalContent != null && info != null) {
 				System.out
